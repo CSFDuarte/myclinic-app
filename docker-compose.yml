@@ -1,54 +1,62 @@
 version: '3.8'
 
 services:
-  # Frontend - Next.js
-  myclinic-next:
-    container_name: myclinic-next
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-    ports:
-      - "3000:3000"
-    environment:
-      - NODE_ENV=development
-      - NEXT_PUBLIC_API_URL=http://myclinic-nest:4000
-    volumes:
-      - ./frontend:/app
-      - /app/node_modules
-      - /app/.next
-    depends_on:
-      - myclinic-nest
+  # MongoDB Database
+  mongodb:
+    image: mongo:7
+    container_name: myclinic-mongodb
     restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: myclinic123
+      MONGO_INITDB_DATABASE: myclinic
+    volumes:
+      - mongodb_data:/data/db
+      - mongodb_config:/data/configdb
+    ports:
+      - "27017:27017"
+    networks:
+      - myclinic-network
 
-  # Backend - NestJS
-  myclinic-nest:
-    container_name: myclinic-nest
+  # NestJS Backend API
+  backend:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    ports:
-      - "4000:4000"
+    container_name: myclinic-backend
+    restart: unless-stopped
     environment:
-      - NODE_ENV=development
-      - MONGODB_URI=mongodb://myclinic-mongo:27017/myclinic
-      - PORT=4000
-    volumes:
-      - ./backend:/app
-      - /app/node_modules
-      - /app/dist
-    depends_on:
-      - myclinic-mongo
-    restart: unless-stopped
-
-  # Database - MongoDB
-  myclinic-mongo:
-    container_name: myclinic-mongo
-    image: mongo:7
+      NODE_ENV: production
+      PORT: 3001
+      MONGODB_URI: mongodb://admin:myclinic123@mongodb:27017/myclinic?authSource=admin
     ports:
-      - "27017:27017"
-    volumes:
-      - myclinic-mongo-data:/data/db
+      - "3001:3001"
+    depends_on:
+      - mongodb
+    networks:
+      - myclinic-network
+
+  # Next.js Frontend
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: myclinic-frontend
     restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      NEXT_PUBLIC_API_URL: http://localhost:3001/api
+    ports:
+      - "8080:3000"
+    depends_on:
+      - backend
+    networks:
+      - myclinic-network
 
 volumes:
-  myclinic-mongo-data:
+  mongodb_data:
+  mongodb_config:
+
+networks:
+  myclinic-network:
+    driver: bridge
