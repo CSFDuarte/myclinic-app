@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  # Frontend - Next.js
+  myclinic-next:
+    container_name: myclinic-next
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - NEXT_PUBLIC_API_URL=http://myclinic-nest:4000
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+      - /app/.next
+    depends_on:
+      - myclinic-nest
+    restart: unless-stopped
+
+  # Backend - NestJS
+  myclinic-nest:
+    container_name: myclinic-nest
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"
+    environment:
+      - NODE_ENV=development
+      - MONGODB_URI=mongodb://myclinic-mongo:27017/myclinic
+      - PORT=4000
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+      - /app/dist
+    depends_on:
+      - myclinic-mongo
+    restart: unless-stopped
+
+  # Database - MongoDB
+  myclinic-mongo:
+    container_name: myclinic-mongo
+    image: mongo:7
+    ports:
+      - "27017:27017"
+    volumes:
+      - myclinic-mongo-data:/data/db
+    restart: unless-stopped
+
+volumes:
+  myclinic-mongo-data:
