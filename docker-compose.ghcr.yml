@@ -1,7 +1,7 @@
 services:
   # Next.js Frontend (apenas)
   frontend:
-    image: ghcr.io/csffuarte/myclinic-app-frontend:latest
+    image: ghcr.io/CSFDuarte/myclinic-app-frontend:latest
     container_name: myclinic-frontend
     restart: unless-stopped
     environment:
