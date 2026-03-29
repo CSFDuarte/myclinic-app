@@ -4,11 +4,13 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch:  # Permite disparar manualmente
+  workflow_dispatch:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_PREFIX: ghcr.io/CSFDuarte/myclinic-app
+  IMAGE_PREFIX: ghcr.io/csffuarte/myclinic-app
+  HOST: 187.77.255.251
+  USER: node
 
 jobs:
   build-and-push:
@@ -32,34 +34,18 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Extract metadata (Backend)
-        id: meta-backend
-        uses: docker/metadata-action@v5
-        with:
-          images: ${{ env.IMAGE_PREFIX }}-backend
-          tags: |
-            type=raw,value=latest,enable={{is_default_branch}}
-            type=sha,prefix={{branch}}-
-
-      - name: Build and push Backend
-        uses: docker/build-push-action@v5
-        with:
-          context: ./backend
-          push: true
-          tags: ${{ steps.meta-backend.outputs.tags }}
-          labels: ${{ steps.meta-backend.outputs.labels }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
-
       - name: Extract metadata (Frontend)
         id: meta-frontend
         uses: docker/metadata-action@v5
         with:
           images: ${{ env.IMAGE_PREFIX }}-frontend
-          tags: ${{ steps.meta-frontend.outputs.tags }}
-          labels: ${{ steps.meta-frontend.outputs.labels }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          tags: |
+            type=raw,value=latest,enable={{is_default_branch}}
+            type=sha,prefix={{branch}}-
+          labels: |
+            org.opencontainers.image.title=MyClinic Frontend
+            org.opencontainers.image.description=Next.js frontend for MyClinic
+            org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
 
       - name: Build and push Frontend
         uses: docker/build-push-action@v5
@@ -76,14 +62,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Deploy Instructions
+      - name: Deploy to VPS via SSH
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         run: |
-          echo "✅ Images built and pushed to GHCR!"
-          echo ""
-          echo "To deploy on VPS, run:"
-          echo "  cd /data/.openclaw/workspace/myclinic-app"
-          echo "  docker compose -f docker-compose.ghcr.yml pull"
-          echo "  docker compose -f docker-compose.ghcr.yml up -d --force-recreate"
-          echo ""
-          echo "Or use the webhook:"
-          echo "  curl -X POST http://127.0.0.1:8765/webhook/deploy -H 'Content-Type: application/json' -d '{\"action\": \"deploy\"}'"
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H ${{ env.HOST }} >> ~/.ssh/known_hosts
+
+          ssh -i ~/.ssh/deploy_key ${{ env.USER }}@${{ env.HOST }} << 'ENDSSH'
+            cd /data/.openclaw/workspace/myclinic-app
+            ./deploy.sh
+          ENDSSH
