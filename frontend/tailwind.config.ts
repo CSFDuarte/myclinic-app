@@ -10,17 +10,20 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          bg:        '#1a1212',
-          bgLight:   '#241919',
-          roseGold:  '#C4977A',
-          gold:      '#B8943A',
-          cream:     '#F0E6D8',
-          muted:     '#9e8e80',
+          bg: '#1a1517',
+          bgLight: '#241d20',
+          rose: '#c4977a',
+          gold: '#b8943a',
+          cream: '#f0e6d8',
+          muted: '#b5a79a',
+          text: '#f0e6d8',
+          accent: '#c4977a',
+          border: '#5a4840',
         },
       },
       fontFamily: {
-        serif: ['var(--font-cormorant)', 'Georgia', 'serif'],
-        sans:  ['var(--font-montserrat)', 'sans-serif'],
+        serif: ['var(--font-lora)', 'Georgia', 'serif'],
+        sans: ['var(--font-poppins)', 'sans-serif'],
       },
     },
   },

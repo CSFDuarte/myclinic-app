@@ -1,37 +1,28 @@
 import type { Metadata } from 'next'
-import { Cormorant_Garamond, Montserrat } from 'next/font/google'
+import { Lora, Poppins } from 'next/font/google'
 import './globals.css'
 
-const cormorant = Cormorant_Garamond({
+const lora = Lora({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-cormorant',
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-lora',
   display: 'swap',
 })
 
-const montserrat = Montserrat({
+const poppins = Poppins({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-montserrat',
+  variable: '--font-poppins',
   display: 'swap',
 })
 
 export const metadata: Metadata = {
-  title: 'MyClinic Odonto — Odontologia Estética e Contemporânea em Campinas',
-  description:
-    'Clínica especializada em Implantes, Invisalign e Estética do Sorriso. Transforme seu sorriso em apenas um dia com o Protocolo All-on-4. Cambuí, Campinas – SP.',
-  keywords: [
-    'implantes dentários campinas',
-    'invisalign campinas',
-    'protocolo dentário',
-    'clareamento dental',
-    'dentista campinas',
-    'odontologia estética',
-    'myclinic odonto',
-  ],
+  title: 'My Clinic Odonto - Clínica odontológica em Campinas',
+  description: 'Clinica especializada em implantes, Invisalign e estetica do sorriso em Campinas.',
+  metadataBase: new URL('https://myclinicodonto.com.br'),
   openGraph: {
-    title: 'MyClinic Odonto — Odontologia Estética e Contemporânea',
-    description: 'Transforme seu sorriso em apenas um dia. Implantes, Invisalign e Estética em Campinas – SP.',
+    title: 'My Clinic Odonto',
+    description: 'Clínica odontológica em Campinas.',
     locale: 'pt_BR',
     type: 'website',
   },
@@ -39,7 +30,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR" className={`${cormorant.variable} ${montserrat.variable}`}>
+    <html lang="pt-BR" className={`${lora.variable} ${poppins.variable}`}>
       <body className="bg-brand-bg text-brand-cream font-sans antialiased">
         {children}
       </body>

@@ -1,60 +1,49 @@
-import { Star } from 'lucide-react'
+import Image from 'next/image'
+import { IMAGES } from '@/lib/constants'
 
 const reasons = [
   {
-    title: 'Transformação em 1 Dia',
-    description:
-      'Com o Protocolo All-on-4, você sai da clínica com um sorriso completo e funcional no mesmo dia. Sem longas esperas, sem etapas desnecessárias.',
+    title: 'Transformacao em um dia',
+    description: 'Com o protocolo de carga imediata, muitos pacientes recuperam o sorriso completo no mesmo dia do procedimento.',
   },
   {
-    title: 'Atendimento Humanizado',
-    description:
-      'Cada paciente tem uma história. Ouvimos, acolhemos e nos dedicamos de coração à transformação de vida de quem passa pela nossa clínica.',
+    title: 'Atendimento humanizado',
+    description: 'Cada plano de tratamento respeita historia, necessidades e objetivos de vida de cada paciente.',
   },
   {
-    title: 'Duas Unidades',
-    description:
-      'Presente em Campinas (Cambuí) e Borda da Mata, estamos cada vez mais próximos de quem precisa transformar o sorriso com qualidade.',
+    title: 'Equipe especialista',
+    description: 'Dr. Adnan de Sousa Freitas e Dra. Polyana Cantuaria conduzem os casos com foco tecnico e acolhimento.',
   },
   {
-    title: 'Equipe Especialista',
-    description:
-      'Dr. Adnan Freitas e Dra. Polyana Cantuária são especialistas dedicados, com formação de alto nível e paixão genuína pela odontologia.',
+    title: 'Duas unidades',
+    description: 'Atendimento em Campinas e Borda da Mata com a mesma qualidade em implantodontia e estetica.',
   },
 ]
 
 export default function WhyUsSection() {
   return (
-    <section className="bg-brand-bg py-24 px-6">
+    <section className="bg-brand-bgLight py-24 px-6 relative overflow-hidden">
+      <Image
+        src={IMAGES.ornamentSide}
+        alt=""
+        aria-hidden
+        width={1024}
+        height={693}
+        className="absolute -right-20 top-12 w-[320px] ornament-soft"
+      />
       <div className="max-w-6xl mx-auto">
-
-        {/* Header */}
         <div className="text-center mb-16">
-          <p className="section-subtitle">Nossos diferenciais</p>
-          <h2 className="section-title">
-            Por que a <span className="text-brand-roseGold">My Clinic Odonto?</span>
-          </h2>
+          <h2 className="section-title">Por que a My Clinic Odonto?</h2>
         </div>
 
-        {/* Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-          {reasons.map((item) => (
-            <div key={item.title} className="flex flex-col items-center gap-4">
-              <Star
-                size={32}
-                className="text-brand-roseGold fill-brand-roseGold/30"
-                aria-hidden
-              />
-              <h3 className="font-serif text-lg text-brand-cream leading-snug">
-                {item.title}
-              </h3>
-              <p className="text-brand-muted font-sans text-sm leading-relaxed">
-                {item.description}
-              </p>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {reasons.map((item, index) => (
+            <div key={`${item.title}-${index}`} className="flex flex-col gap-3">
+              <h3 className="font-sans font-semibold text-xl text-brand-cream leading-snug">{item.title}</h3>
+              <p className="text-brand-muted font-sans text-sm leading-relaxed">{item.description}</p>
             </div>
           ))}
         </div>
-
       </div>
     </section>
   )

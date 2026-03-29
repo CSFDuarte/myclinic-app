@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --font-cormorant: 'Cormorant Garamond', Georgia, serif;
-  --font-montserrat: 'Montserrat', sans-serif;
+  --font-lora: 'Lora', Georgia, serif;
+  --font-poppins: 'Poppins', sans-serif;
 }
 
 html {
@@ -12,27 +12,33 @@ html {
 }
 
 body {
-  background-color: #1a1212;
-  color: #F0E6D8;
-  font-family: var(--font-montserrat);
+  background-color: #1a1517;
+  color: #f0e6d8;
+  font-family: var(--font-poppins);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+@layer utilities {
+  .ornament-soft {
+    @apply opacity-10 saturate-0 brightness-75 pointer-events-none select-none;
+  }
+}
+
 @layer components {
   .btn-primary {
-    @apply inline-block bg-brand-roseGold text-white font-sans font-medium text-sm tracking-widest uppercase px-8 py-3 transition-all duration-300 hover:bg-opacity-90 hover:scale-105;
+    @apply inline-block bg-brand-rose text-white font-sans font-medium text-sm px-8 py-3 rounded-lg transition-colors duration-200 hover:bg-[#af8165];
   }
 
   .btn-outline {
-    @apply inline-block border border-brand-roseGold text-brand-roseGold font-sans font-medium text-sm tracking-widest uppercase px-8 py-3 transition-all duration-300 hover:bg-brand-roseGold hover:text-white;
+    @apply inline-block border border-brand-rose text-brand-cream font-sans font-medium text-sm px-8 py-3 rounded-lg transition-colors duration-200 hover:bg-brand-rose hover:text-white;
   }
 
   .section-title {
-    @apply font-serif text-4xl md:text-5xl text-brand-cream leading-tight;
+    @apply font-serif text-4xl md:text-5xl font-semibold text-brand-cream leading-tight;
   }
 
   .section-subtitle {
-    @apply font-sans text-brand-muted text-xs tracking-widest uppercase mb-4;
+    @apply font-sans text-brand-muted text-base mb-4;
   }
 }
