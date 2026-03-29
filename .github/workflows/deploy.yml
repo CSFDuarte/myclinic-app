@@ -76,23 +76,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Deploy to VPS via SSH
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USER }}
-          key: ${{ secrets.VPS_SSH_KEY }}
-          script: |
-            cd /data/.openclaw/workspace/myclinic-app
-            
-            # Pull latest images from GHCR
-            docker compose -f docker-compose.ghcr.yml pull
-            
-            # Restart services with new images
-            docker compose -f docker-compose.ghcr.yml up -d --force-recreate
-            
-            # Cleanup old images
-            docker image prune -af --filter "until=24h"
+      - name: Trigger deploy webhook
+        run: |
+          curl -X POST "${{ secrets.WEBHOOK_URL }}" \
+            -H "Content-Type: application/json" \
+            -d '{"action": "deploy", "image_prefix": "ghcr.io/CSFDuarte/myclinic-app"}'
+        if: success()
