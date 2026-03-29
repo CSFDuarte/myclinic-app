@@ -76,9 +76,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Trigger deploy webhook
+      - name: Deploy Instructions
         run: |
-          curl -X POST "${{ secrets.WEBHOOK_URL }}" \
-            -H "Content-Type: application/json" \
-            -d '{"action": "deploy", "image_prefix": "ghcr.io/CSFDuarte/myclinic-app"}'
-        if: success()
+          echo "✅ Images built and pushed to GHCR!"
+          echo ""
+          echo "To deploy on VPS, run:"
+          echo "  cd /data/.openclaw/workspace/myclinic-app"
+          echo "  docker compose -f docker-compose.ghcr.yml pull"
+          echo "  docker compose -f docker-compose.ghcr.yml up -d --force-recreate"
+          echo ""
+          echo "Or use the webhook:"
+          echo "  curl -X POST http://127.0.0.1:8765/webhook/deploy -H 'Content-Type: application/json' -d '{\"action\": \"deploy\"}'"
