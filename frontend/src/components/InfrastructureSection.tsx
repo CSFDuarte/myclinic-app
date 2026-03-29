@@ -13,17 +13,17 @@ export default function InfrastructureSection() {
         </div>
 
         <div>
-          <h2 className="section-title mb-6">Estrutura moderna no Cambui e atendimento humanizado</h2>
+          <h2 className="section-title mb-6">Estrutura moderna no Cambuí e atendimento humanizado</h2>
           <p className="text-brand-muted font-sans text-lg leading-relaxed mb-8">
-            A unidade principal fica na Rua Jose Guatemosin Nogueira, 26, no Cambui em Campinas. O espaco
-            foi planejado para oferecer conforto, acolhimento e seguranca em cada etapa do tratamento.
+            A unidade principal fica na Rua José Guatemosin Nogueira, 26, no Cambuí em Campinas. O espaço
+            foi planejado para oferecer conforto, acolhimento e segurança em cada etapa do tratamento.
           </p>
           <p className="text-brand-muted font-sans text-base leading-relaxed mb-8">
-            Tambem atendemos em Borda da Mata, ampliando o acesso para quem busca implantes, Invisalign,
-            estetica do sorriso e protocolos de carga imediata.
+            Também atendemos em Borda da Mata, ampliando o acesso para quem busca implantes, Invisalign,
+            estética do sorriso e protocolos de carga imediata.
           </p>
           <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="btn-primary">
-            Quero agendar minha avaliacao
+            Quero agendar minha avaliação
           </a>
         </div>
       </div>

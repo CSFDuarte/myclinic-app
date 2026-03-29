@@ -21,8 +21,8 @@ export default function Navbar() {
     <header className="sticky top-0 left-0 right-0 z-50 bg-brand-bg/95 backdrop-blur border-b border-brand-border">
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-20">
         <Link href="/" className="flex-shrink-0">
-          <div className="flex flex-row items-center justify-center gap-0.5">
-            <div className="relative w-12 h-12">
+          <div className="flex flex-row items-center justify-center gap-1.5">
+            <div className="relative w-[56px] h-[56px]">
               <Image
                 src={IMAGES.logoTopSymbol}
                 alt="Símbolo My Clinic"
@@ -31,7 +31,7 @@ export default function Navbar() {
                 priority
               />
             </div>
-            <div className="relative w-[42px] h-[9px] -ml-0.5">
+            <div className="relative w-[227px] h-[50px] -ml-1.5">
               <Image
                 src={IMAGES.logoTopWordmark}
                 alt="Marca My Clinic"

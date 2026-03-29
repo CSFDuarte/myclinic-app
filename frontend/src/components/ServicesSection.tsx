@@ -3,20 +3,24 @@ import { IMAGES, WHATSAPP_URL } from '@/lib/constants'
 
 const services = [
   {
-    title: 'Protocolo Dentario All-on-4',
-    description: 'Reabilitacao completa com carga imediata para devolver estetica, mastigacao e qualidade de vida em um unico dia.',
+    title: 'Protocolo Dentário All-on-4',
+    description: 'Reabilitação completa com carga imediata para devolver estética, mastigação e qualidade de vida em um único dia.',
+    image: IMAGES.clinicPhoto,
   },
   {
-    title: 'Implantes Dentarios',
+    title: 'Implantes Dentários',
     description: 'Implantes convencionais com planejamento personalizado, materiais de alta qualidade e foco em longevidade.',
+    image: IMAGES.heroBackground,
   },
   {
     title: 'Invisalign',
-    description: 'Ortodontia com alinhadores transparentes para corrigir o sorriso com discricao, conforto e previsibilidade.',
+    description: 'Ortodontia com alinhadores transparentes para corrigir o sorriso com discrição, conforto e previsibilidade.',
+    image: IMAGES.placeholderB,
   },
   {
-    title: 'Estetica do Sorriso',
-    description: 'Clareamento e procedimentos esteticos para harmonizar o sorriso e elevar a autoestima.',
+    title: 'Estética do Sorriso',
+    description: 'Clareamento e procedimentos estéticos para harmonizar o sorriso e elevar a autoestima.',
+    image: IMAGES.placeholderA,
   },
 ]
 
@@ -35,14 +39,14 @@ export default function ServicesSection() {
         <div className="text-center mb-16">
           <h2 className="section-title">Conheça nossas especialidades</h2>
           <p className="text-brand-muted font-sans text-lg mt-4">
-            Somos especialistas em implantes, ortodontia e estetica dental com abordagem humanizada.
+            Somos especialistas em implantes, ortodontia e estética dental com abordagem humanizada.
           </p>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((svc, index) => (
             <div key={`${svc.title}-${index}`} className="bg-brand-bgLight border border-brand-border rounded-2xl p-6 flex flex-col">
-              <Image src={IMAGES.placeholderA} alt="Serviço" width={683} height={600} className="w-full h-auto mb-5" />
+              <Image src={svc.image} alt={svc.title} width={683} height={600} className="w-full h-40 object-cover rounded-xl mb-5" />
 
               <h3 className="font-sans text-xl text-brand-cream mb-3">{svc.title}</h3>
               <p className="text-brand-muted font-sans text-sm leading-relaxed mb-6 flex-1">{svc.description}</p>

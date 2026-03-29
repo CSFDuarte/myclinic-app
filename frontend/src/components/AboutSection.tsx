@@ -8,8 +8,8 @@ export default function AboutSection() {
         <div>
           <h2 className="section-title mb-6">Odontologia Estética e Contemporânea em Campinas</h2>
           <p className="text-brand-muted font-sans text-lg leading-relaxed mb-8">
-            A MyClinic Odonto e especializada em Implantes e Ortodontia, com uma experiencia unica de
-            transformacao do sorriso. Nossa missao e transformar sorrisos e renovar a autoestima dos pacientes.
+            A MyClinic Odonto é especializada em Implantes e Ortodontia, com uma experiência única de
+            transformação do sorriso. Nossa missão é transformar sorrisos e renovar a autoestima dos pacientes.
           </p>
           <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="btn-primary">
             Agende pelo WhatsApp

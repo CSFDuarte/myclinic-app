@@ -3,19 +3,19 @@ import { IMAGES } from '@/lib/constants'
 
 const testimonials = [
   {
-    quote: '"Ter um sorriso completo nao e so estetica. Voltei a sorrir com seguranca e recuperei minha qualidade de vida."',
+    quote: '"Ter um sorriso completo não é só estética. Voltei a sorrir com segurança e recuperei minha qualidade de vida."',
     name: 'Tia Maria',
-    role: 'Paciente de protocolo dentario',
+    role: 'Paciente de protocolo dentário',
   },
   {
-    quote: '"Minha experiencia com Invisalign foi excelente. Atendimento proximo, explicacoes claras e resultado acima do esperado."',
+    quote: '"Minha experiência com Invisalign foi excelente. Atendimento próximo, explicações claras e resultado acima do esperado."',
     name: 'Sr. Jose',
     role: 'Paciente de ortodontia',
   },
   {
-    quote: '"A equipe cuidou de cada detalhe. Meu sorriso mudou e minha autoestima tambem. Recomendo de olhos fechados."',
+    quote: '"A equipe cuidou de cada detalhe. Meu sorriso mudou e minha autoestima também. Recomendo de olhos fechados."',
     name: 'Dona Gildete',
-    role: 'Paciente de estetica do sorriso',
+    role: 'Paciente de estética do sorriso',
   },
 ]
 

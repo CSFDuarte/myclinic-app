@@ -28,7 +28,7 @@ export default function ContatosPage() {
           <div>
             <h1 className="section-title mb-6">Fale com a MyClinic Odonto</h1>
             <p className="text-brand-muted text-lg">
-              Agende pelo WhatsApp e descubra o tratamento ideal para transformar seu sorriso com seguranca.
+              Agende pelo WhatsApp e descubra o tratamento ideal para transformar seu sorriso com segurança.
             </p>
           </div>
           <Image src={IMAGES.placeholderB} alt="Contact" width={683} height={600} className="w-full h-auto rounded-2xl" />
@@ -67,7 +67,7 @@ export default function ContatosPage() {
               Ver no mapa
             </a>
             <p className="text-brand-muted text-sm mt-5">
-              Atendimento tambem disponivel em Borda da Mata.
+              Atendimento também disponível em Borda da Mata.
             </p>
           </div>
         </section>

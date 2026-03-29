@@ -3,20 +3,20 @@ import { IMAGES } from '@/lib/constants'
 
 const reasons = [
   {
-    title: 'Transformacao em um dia',
+    title: 'Transformação em um dia',
     description: 'Com o protocolo de carga imediata, muitos pacientes recuperam o sorriso completo no mesmo dia do procedimento.',
   },
   {
     title: 'Atendimento humanizado',
-    description: 'Cada plano de tratamento respeita historia, necessidades e objetivos de vida de cada paciente.',
+    description: 'Cada plano de tratamento respeita história, necessidades e objetivos de vida de cada paciente.',
   },
   {
     title: 'Equipe especialista',
-    description: 'Dr. Adnan de Sousa Freitas e Dra. Polyana Cantuaria conduzem os casos com foco tecnico e acolhimento.',
+    description: 'Dr. Adnan de Sousa Freitas e Dra. Polyana Cantuária conduzem os casos com foco técnico e acolhimento.',
   },
   {
     title: 'Duas unidades',
-    description: 'Atendimento em Campinas e Borda da Mata com a mesma qualidade em implantodontia e estetica.',
+    description: 'Atendimento em Campinas e Borda da Mata com a mesma qualidade em implantodontia e estética.',
   },
 ]
 
