@@ -1,26 +1,17 @@
-#!/bin/bash
-
-# Deploy Script - MyClinic App (Frontend only)
-# Executado pelo GitHub Actions via SSH
-
-set -e
-
+#!/bin/sh
 echo "[$(date)] Deploy started"
-echo "Ref: $REF"
-echo "Commit: $COMMIT"
+cd /docker/apps/myclinic-app || exit 1
 
-# Pull latest image from GHCR
+echo "Ref: $(git rev-parse --short HEAD 2>/dev/null || echo 'unknown')"
+echo "Commit: $(git log -1 --oneline 2>/dev/null || echo 'unknown')"
+
 echo "Pulling latest frontend image..."
-cd /data/.openclaw/workspace/myclinic-app
-docker-compose -f docker-compose.ghcr.yml pull frontend
+docker compose -f docker-compose.ghcr.yml pull frontend || exit 1
 
-# Restart service with new image
-echo "Restarting frontend service..."
-docker-compose -f docker-compose.ghcr.yml up -d frontend --force-recreate
+echo "Restarting frontend container..."
+docker compose -f docker-compose.ghcr.yml up -d --force-recreate frontend || exit 1
 
-# Cleanup old images
 echo "Cleaning up old images..."
-docker image prune -af --filter "until=48h" 2>/dev/null || docker image prune -f
+docker image prune -f
 
-echo "[$(date)] Deploy completed successfully!"
-echo "Frontend: http://187.77.255.251:8081"
+echo "[$(date)] Deploy completed"
