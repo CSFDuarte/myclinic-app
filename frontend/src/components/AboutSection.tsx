@@ -16,13 +16,12 @@ export default function AboutSection() {
           </a>
         </div>
 
-        <div className="flex justify-center">
+        <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden">
           <Image
-            src={IMAGES.logoAccent}
-            alt="My Clinic"
-            width={347}
-            height={344}
-            className="w-48 md:w-64 h-auto object-contain"
+            src={IMAGES.fotoClinica}
+            alt="Clínica MyClinic Odonto em Campinas"
+            fill
+            className="object-cover"
           />
         </div>
       </div>

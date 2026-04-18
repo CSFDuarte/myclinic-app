@@ -6,6 +6,7 @@ export const IMAGES = {
   logoAccent: '/images/logo-accent.png',
   logoIcon: '/images/logo-icon.png',
   clinicPhoto: '/images/clinic-photo.jpeg',
+  fotoClinica: '/images/foto-clinica.jpeg',
   placeholderA: '/images/placeholder-a.jpeg',
   placeholderB: '/images/placeholder-b.jpeg',
   ornamentTop: '/images/ornament-top.png',
