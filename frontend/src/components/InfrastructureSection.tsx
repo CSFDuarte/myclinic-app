@@ -6,10 +6,10 @@ export default function InfrastructureSection() {
     <section className="bg-brand-bgLight py-24 px-6">
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
         <div className="grid grid-cols-2 gap-4">
-          <Image src={IMAGES.placeholderB} alt="Clínica" width={683} height={600} className="w-full h-auto" />
-          <Image src={IMAGES.placeholderB} alt="Clínica" width={683} height={600} className="w-full h-auto" />
-          <Image src={IMAGES.placeholderB} alt="Clínica" width={683} height={600} className="w-full h-auto" />
-          <Image src={IMAGES.placeholderB} alt="Clínica" width={683} height={600} className="w-full h-auto" />
+          <Image src={IMAGES.clinic1} alt="Sala de espera da clínica" width={800} height={800} className="w-full h-full aspect-square object-cover rounded-2xl" />
+          <Image src={IMAGES.clinic2} alt="Consultório odontológico" width={800} height={800} className="w-full h-full aspect-square object-cover rounded-2xl" />
+          <Image src={IMAGES.clinic3} alt="Ambiente interno da clínica" width={800} height={800} className="w-full h-full aspect-square object-cover rounded-2xl" />
+          <Image src={IMAGES.clinic4} alt="Instrumentos odontológicos" width={800} height={800} className="w-full h-full aspect-square object-cover rounded-2xl" />
         </div>
 
         <div>

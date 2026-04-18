@@ -18,8 +18,8 @@ export default function AboutSection() {
 
         <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden">
           <Image
-            src={IMAGES.fotoClinica}
-            alt="Clínica MyClinic Odonto em Campinas"
+            src={IMAGES.aboutEstetica}
+            alt="Odontologia estética e contemporânea em Campinas"
             fill
             className="object-cover"
           />
