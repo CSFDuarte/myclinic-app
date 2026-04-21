@@ -3,42 +3,109 @@
 @tailwind utilities;
 
 :root {
-  --font-lora: 'Lora', Georgia, serif;
-  --font-poppins: 'Poppins', sans-serif;
+  --ivory: #FAF6F1;
+  --ivory-2: #F3ECE3;
+  --parchment: #E8DDD0;
+  --bronze: #B8876A;
+  --bronze-deep: #8C5A4B;
+  --rose-gold: #D4A78A;
+  --gold: #C9A77A;
+  --espresso: #2A1F1A;
+  --coffee: #4A3A32;
+  --muted: #8B7768;
+  --line: rgba(140, 90, 75, 0.18);
+  --line-strong: rgba(140, 90, 75, 0.35);
 }
 
-html {
-  scroll-behavior: smooth;
-}
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
 
 body {
-  background-color: #1a1517;
-  color: #f0e6d8;
-  font-family: var(--font-poppins);
+  font-family: var(--font-inter), 'Inter', sans-serif;
+  background: var(--ivory);
+  color: var(--espresso);
+  font-size: 16px;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
-@layer utilities {
-  .ornament-soft {
-    @apply opacity-10 saturate-0 brightness-75 pointer-events-none select-none;
-  }
+/* Typography helpers */
+.font-cormorant { font-family: var(--font-cormorant), 'Cormorant Garamond', serif; }
+.font-italiana  { font-family: var(--font-italiana),  'Italiana', serif; }
+
+.display {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-weight: 300;
+  letter-spacing: -0.015em;
+  line-height: 1.02;
+}
+.display em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--bronze-deep);
 }
 
-@layer components {
-  .btn-primary {
-    @apply inline-block bg-brand-rose text-white font-sans font-medium text-sm px-8 py-3 rounded-lg transition-colors duration-200 hover:bg-[#af8165];
-  }
-
-  .btn-outline {
-    @apply inline-block border border-brand-rose text-brand-cream font-sans font-medium text-sm px-8 py-3 rounded-lg transition-colors duration-200 hover:bg-brand-rose hover:text-white;
-  }
-
-  .section-title {
-    @apply font-serif text-4xl md:text-5xl font-semibold text-brand-cream leading-tight;
-  }
-
-  .section-subtitle {
-    @apply font-sans text-brand-muted text-base mb-4;
-  }
+.eyebrow {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--bronze-deep);
 }
+
+.gold-text {
+  background: linear-gradient(120deg, #C9A77A 0%, #D4A78A 25%, #8C5A4B 55%, #B8876A 80%, #C9A77A 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Marquee animation */
+@keyframes marquee-scroll {
+  to { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee-scroll 40s linear infinite;
+}
+
+/* Reveal on scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Btn variants */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 14px 24px;
+  border-radius: 0;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+.btn-primary { background: var(--espresso); color: var(--ivory); }
+.btn-primary:hover { background: var(--bronze-deep); }
+.btn-ghost { background: transparent; color: var(--espresso); border-color: var(--espresso); }
+.btn-ghost:hover { background: var(--espresso); color: var(--ivory); }
+.btn-gold {
+  background: linear-gradient(120deg, #C9A77A 0%, #8C5A4B 50%, #B8876A 100%);
+  color: var(--ivory);
+}
+.btn-gold:hover { filter: brightness(1.08); }

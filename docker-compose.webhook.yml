@@ -1,0 +1,11 @@
+services:
+  webhook:
+    build: ./webhook
+    container_name: myclinic-webhook
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /docker/apps/myclinic-app:/docker/apps/myclinic-app:ro
+    ports:
+      - "8765:8765"
+    network_mode: host

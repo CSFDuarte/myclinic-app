@@ -1,27 +1,16 @@
 import Image from 'next/image'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import ServicosContent from '@/components/ServicosContent'
 import { IMAGES, WHATSAPP_URL } from '@/lib/constants'
 
-const serviceRows = [
-  {
-    title: 'Protocolo Dentário (All-on-4)',
-    description: 'Reabilitação completa para pacientes com perda total dos dentes, com carga imediata e foco em qualidade de vida.',
-    image: IMAGES.clinicPhoto,
-  },
-  {
-    title: 'Implantes Dentários',
-    description: 'Planejamento individual, cirurgia segura e acompanhamento contínuo para garantir estabilidade e funcionalidade.',
-    image: IMAGES.heroBackground,
-  },
-  {
-    title: 'Invisalign e Estética do Sorriso',
-    description: 'Alinhadores transparentes, clareamento e soluções estéticas para harmonizar o sorriso de forma natural.',
-    image: IMAGES.placeholderA,
-  },
-]
+interface Props {
+  searchParams: { q?: string }
+}
 
-export default function ServicosPage() {
+export default function ServicosPage({ searchParams }: Props) {
+  const initialQuery = searchParams.q ?? ''
+
   return (
     <>
       <Navbar />
@@ -35,36 +24,32 @@ export default function ServicosPage() {
             height={1249}
             className="absolute -top-24 -right-24 w-[330px] ornament-soft"
           />
-          <h1 className="section-title text-center mb-14">Nossos Serviços</h1>
+          <h1 className="section-title text-center mb-4">Nossos Serviços</h1>
+          <p className="text-center text-brand-muted mb-12 max-w-md mx-auto text-sm">
+            Encontre o tratamento ideal para o seu sorriso.
+          </p>
 
-          <div className="space-y-16">
-            {serviceRows.map((item, index) => (
-              <article
-                key={item.title}
-                className={`grid md:grid-cols-2 gap-10 items-center ${index % 2 === 1 ? 'md:[&>*:first-child]:order-2' : ''}`}
-              >
-                <Image src={item.image} alt={item.title} width={683} height={600} className="w-full h-72 object-cover rounded-2xl" />
-                <div className="bg-brand-bgLight border border-brand-border rounded-2xl p-6">
-                  <h2 className="text-2xl font-semibold text-brand-cream mb-3">{item.title}</h2>
-                  <p className="text-brand-muted mb-5">{item.description}</p>
-                </div>
-              </article>
-            ))}
-          </div>
+          <ServicosContent initialQuery={initialQuery} />
         </section>
 
         <section className="bg-brand-bgLight py-20 px-6">
           <div className="max-w-3xl mx-auto">
-            <h3 className="text-3xl font-semibold text-brand-cream mb-8 text-center">Perguntas frequentes</h3>
+            <h3 className="text-3xl font-semibold text-brand-cream mb-8 text-center">
+              Perguntas frequentes
+            </h3>
             <div className="space-y-4 text-sm">
               <details className="border border-brand-border bg-brand-bg rounded-xl p-4">
-                <summary className="cursor-pointer font-medium text-brand-cream">Implante dentário dura para sempre?</summary>
+                <summary className="cursor-pointer font-medium text-brand-cream">
+                  Implante dentário dura para sempre?
+                </summary>
                 <p className="text-brand-muted mt-2">
                   Com indicação correta e manutenção periódica, os implantes podem ter longa durabilidade.
                 </p>
               </details>
               <details className="border border-brand-border bg-brand-bg rounded-xl p-4">
-                <summary className="cursor-pointer font-medium text-brand-cream">Como funciona a limpeza do protocolo?</summary>
+                <summary className="cursor-pointer font-medium text-brand-cream">
+                  Como funciona a limpeza do protocolo?
+                </summary>
                 <p className="text-brand-muted mt-2">
                   A higienização adequada evita placa bacteriana, inflamações gengivais e ajuda a preservar os implantes.
                 </p>

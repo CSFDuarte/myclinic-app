@@ -1,28 +1,36 @@
 import type { Metadata } from 'next'
-import { Lora, Poppins } from 'next/font/google'
+import { Cormorant_Garamond, Inter, Italiana } from 'next/font/google'
 import './globals.css'
 
-const lora = Lora({
+const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-lora',
+  weight: ['300', '400', '500', '600'],
+  style: ['normal', 'italic'],
+  variable: '--font-cormorant',
   display: 'swap',
 })
 
-const poppins = Poppins({
+const inter = Inter({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-poppins',
+  weight: ['300', '400', '500', '600'],
+  variable: '--font-inter',
+  display: 'swap',
+})
+
+const italiana = Italiana({
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-italiana',
   display: 'swap',
 })
 
 export const metadata: Metadata = {
-  title: 'My Clinic Odonto - Clínica odontológica em Campinas',
-  description: 'Clinica especializada em implantes, Invisalign e estetica do sorriso em Campinas.',
+  title: 'MyClinic Odonto — Odontologia Estética e Contemporânea',
+  description: 'Clínica boutique em Campinas especializada em Implantodontia, Invisalign e Estética do Sorriso. Dr. Adnan Freitas e Dra. Polyana Cantuária.',
   metadataBase: new URL('https://myclinicodonto.com.br'),
   openGraph: {
-    title: 'My Clinic Odonto',
-    description: 'Clínica odontológica em Campinas.',
+    title: 'MyClinic Odonto — Odontologia Estética e Contemporânea',
+    description: 'Implantes, Invisalign e Estética do Sorriso em Campinas.',
     locale: 'pt_BR',
     type: 'website',
   },
@@ -30,8 +38,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR" className={`${lora.variable} ${poppins.variable}`}>
-      <body className="bg-brand-bg text-brand-cream font-sans antialiased">
+    <html lang="pt-BR" className={`${cormorant.variable} ${inter.variable} ${italiana.variable}`}>
+      <head>
+        <script
+          defer
+          src="https://analytics.srv1522376.hstgr.cloud/script.js"
+          data-website-id="1edb21ef-4187-4b63-8d4e-fe531bf9d603"
+        />
+      </head>
+      <body className="antialiased">
         {children}
       </body>
     </html>

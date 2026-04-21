@@ -1,20 +1,26 @@
 services:
-  # Next.js Frontend (apenas)
   frontend:
-    image: ghcr.io/CSFDuarte/myclinic-app-frontend:latest
+    image: ghcr.io/csfduarte/myclinic-app-frontend:latest
     container_name: myclinic-frontend
     restart: unless-stopped
     environment:
       NODE_ENV: production
+      HOSTNAME: 0.0.0.0
     ports:
       - "8081:3000"
     networks:
       - myclinic-network
+      - proxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "traefik.http.routers.myclinic-frontend.rule=Host(`landing.srv1522376.hstgr.cloud`) || Host(`myclinic.vitallyze.com`)"
+      - "traefik.http.routers.myclinic-frontend.entrypoints=websecure"
+      - "traefik.http.routers.myclinic-frontend.tls.certresolver=letsencrypt"
+      - "traefik.http.services.myclinic-frontend.loadbalancer.server.port=3000"
 
 networks:
   myclinic-network:
     driver: bridge
-
-volumes:
-  # Volume para persistir dados do frontend se necessário
-  frontend_data:
+  proxy:
+    external: true
