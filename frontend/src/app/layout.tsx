@@ -28,6 +28,9 @@ export const metadata: Metadata = {
   title: 'MyClinic Odonto — Odontologia Estética e Contemporânea',
   description: 'Clínica boutique em Campinas especializada em Implantodontia, Invisalign e Estética do Sorriso. Dr. Adnan Freitas e Dra. Polyana Cantuária.',
   metadataBase: new URL('https://myclinicodonto.com.br'),
+  icons: {
+    icon: '/images/logo-top-symbol.png',
+  },
   openGraph: {
     title: 'MyClinic Odonto — Odontologia Estética e Contemporânea',
     description: 'Implantes, Invisalign e Estética do Sorriso em Campinas.',
