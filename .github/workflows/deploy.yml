@@ -58,9 +58,11 @@ jobs:
 
   deploy:
     needs: build-and-push
-    runs-on: ubuntu-latest
+    # Self-hosted: loopback curl no webhook da VPS, bypass filter upstream
+    # (incident 2026-04-24-webhook-ghcr-tcp-blocked).
+    runs-on: [self-hosted, vps, myclinic]
 
     steps:
       - name: Trigger Deploy Webhook
         run: |
-          curl -X POST http://${{ env.HOST }}:8765/deploy
+          curl -fS -X POST --max-time 600 http://127.0.0.1:8765/deploy
