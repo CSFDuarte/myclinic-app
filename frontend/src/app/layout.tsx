@@ -50,7 +50,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
         <script
           async
-          src="https://agenda.srv1522376.hstgr.cloud/embed/v1/widget.js"
+          src="https://agenda.vitallyze.com/embed/v1/widget.js"
           data-tenant="myclinic"
         />
       </head>
