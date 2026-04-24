@@ -66,7 +66,7 @@ export default function Navbar() {
             <div className="nav-phone-desktop" style={{ fontSize: '12px', color: 'var(--muted)', letterSpacing: '0.1em' }}>
               +55 19 <strong style={{ color: 'var(--espresso)', fontWeight: 500 }}>99938-2566</strong>
             </div>
-            <a href="https://wa.me/5519999382566" className="btn btn-primary" style={{ fontSize: '11px', padding: '12px 20px' }}>
+            <a href="#agendar" data-scheduling-open className="btn btn-primary" style={{ fontSize: '11px', padding: '12px 20px' }}>
               Agendar
             </a>
           </div>

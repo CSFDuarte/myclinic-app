@@ -40,7 +40,7 @@ export default function HeroSection() {
             </p>
 
             <div style={{ display: 'flex', gap: '14px', alignItems: 'center', flexWrap: 'wrap' }}>
-              <a href="https://wa.me/5519999382566" className="btn btn-gold">Agende sua avaliação</a>
+              <a href="#agendar" data-scheduling-open className="btn btn-gold">Agende sua avaliação</a>
               <a href="#especialidades" className="btn btn-ghost">Nossas especialidades</a>
             </div>
           </div>

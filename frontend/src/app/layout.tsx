@@ -48,6 +48,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           src="https://analytics.srv1522376.hstgr.cloud/script.js"
           data-website-id="1edb21ef-4187-4b63-8d4e-fe531bf9d603"
         />
+        <script
+          async
+          src="https://agenda.srv1522376.hstgr.cloud/embed/v1/widget.js"
+          data-tenant="myclinic"
+        />
       </head>
       <body className="antialiased">
         {children}

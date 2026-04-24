@@ -67,8 +67,8 @@ export default function CTASection() {
           descubra como transformar o seu sorriso com segurança e previsibilidade.
         </p>
 
-        <a href="https://wa.me/5519999382566" className="btn btn-gold" style={{ padding: '18px 36px' }}>
-          Agendar pelo WhatsApp
+        <a href="#agendar" data-scheduling-open className="btn btn-gold" style={{ padding: '18px 36px' }}>
+          Agendar consulta
         </a>
       </div>
     </section>
